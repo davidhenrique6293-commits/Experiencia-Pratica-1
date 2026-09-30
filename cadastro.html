@@ -5,18 +5,35 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Formulário de cadastro para voluntários e doadores da ONG Ação & Esperança.">
 	<title>Cadastro - Ação & Esperança</title>
+	<link rel="stylesheet" href="styles.css">
+	<script src="script.js" defer></script>
 </head>
 <body>
+	<a class="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
 
 	<header class="main-header">
 		<div class="container">
 			<a href="index.html" class="logo">
-				<img src="assets/imagens/logo.svg" alt="Logotipo da ONG Ação & Esperança" width="150" height="146">
+				<img src="assets/imagens/logo.png" alt="Logotipo da ONG Ação & Esperança" width="150" height="146">
 			</a>
-			<nav aria-label="Navegação principal">
+			<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Abrir navegação">
+				<span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+			</button>
+			<nav id="primary-navigation" aria-label="Navegação principal">
 				<ul class="nav-list">
 					<li><a href="index.html">Início</a></li>
-					<li><a href="projetos.html">Projetos</a></li>
+					<li class="nav-projects">
+						<a href="projetos.html">Projetos</a>
+						<details class="nav-dropdown">
+							<summary class="dropdown-toggle"><span class="visually-hidden">Atalhos de projetos</span></summary>
+							<div class="dropdown-menu">
+								<a href="projetos.html">Todos os projetos</a>
+								<a href="projetos.html#futuro-brilhante">Futuro Brilhante</a>
+								<a href="projetos.html#prato-cheio">Prato Cheio</a>
+								<a href="projetos.html#doacoes">Doações</a>
+							</div>
+						</details>
+					</li>
 					<li><a href="cadastro.html" class="active" aria-current="page">Cadastro</a></li>
 				</ul>
 			</nav>
@@ -30,7 +47,7 @@
 				Preencha o formulário abaixo para se registrar como voluntário ou realizar contribuições com a nossa instituição.
 			</p>
 
-			<form action="#" method="post" class="registration-form" novalidate>
+			<form action="#" method="post" class="registration-form">
 
 				<!-- Agrupamento 1: Informações Pessoais -->
 				<fieldset class="form-group">
@@ -204,17 +221,31 @@
 
 				<!-- Termos e Submissão -->
 				<div class="form-actions">
-					<label class="checkbox-label terms-label">
-						<input type="checkbox" id="termos" name="termos" required>
-						Declaro que li e aceito os <a href="#" target="_blank">Termos de Uso e Política de Privacidade</a>. <span class="required" aria-hidden="true">*</span>
-					</label>
+					<div class="terms-consent">
+						<label class="checkbox-label terms-label">
+							<input type="checkbox" id="termos" name="termos" required>
+							Li o aviso sobre este formulário e concordo em continuar. <span class="required" aria-hidden="true">*</span>
+						</label>
+						<button type="button" class="text-button js-only" data-dialog-open="privacy-dialog">Ler aviso sobre o formulário</button>
+					</div>
 
 					<button type="submit" class="btn btn-primary">Finalizar Cadastro</button>
 				</div>
+				<p class="form-feedback" id="form-feedback" role="status" aria-live="polite" hidden></p>
 
 			</form>
 		</section>
 	</main>
+
+	<dialog id="privacy-dialog" class="info-dialog" aria-labelledby="privacy-dialog-title">
+		<div class="dialog-content">
+			<h2 id="privacy-dialog-title">Aviso sobre o formulário</h2>
+			<p>Este site é uma demonstração. Os dados preenchidos não são enviados nem armazenados. Não informe dados pessoais reais.</p>
+			<form method="dialog">
+				<button type="submit" class="btn btn-secondary">Fechar</button>
+			</form>
+		</div>
+	</dialog>
 
 	<footer class="main-footer">
 		<div class="container">

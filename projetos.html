@@ -5,18 +5,35 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="Conheça os projetos sociais e iniciativas de apoio da ONG Ação & Esperança.">
 	<title>Projetos - Ação & Esperança</title>
+	<link rel="stylesheet" href="styles.css">
+	<script src="script.js" defer></script>
 </head>
 <body>
+	<a class="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
 
 	<header class="main-header">
 		<div class="container">
 			<a href="index.html" class="logo">
-				<img src="assets/imagens/logo.svg" alt="Logotipo da ONG Ação & Esperança" width="150" height="146">
+				<img src="assets/imagens/logo.png" alt="Logotipo da ONG Ação & Esperança" width="150" height="146">
 			</a>
-			<nav aria-label="Navegação principal">
+			<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Abrir navegação">
+				<span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+			</button>
+			<nav id="primary-navigation" aria-label="Navegação principal">
 				<ul class="nav-list">
 					<li><a href="index.html">Início</a></li>
-					<li><a href="projetos.html" class="active" aria-current="page">Projetos</a></li>
+					<li class="nav-projects">
+						<a href="projetos.html" class="active" aria-current="page">Projetos</a>
+						<details class="nav-dropdown">
+							<summary class="dropdown-toggle"><span class="visually-hidden">Atalhos de projetos</span></summary>
+							<div class="dropdown-menu">
+								<a href="projetos.html">Todos os projetos</a>
+								<a href="projetos.html#futuro-brilhante">Futuro Brilhante</a>
+								<a href="projetos.html#prato-cheio">Prato Cheio</a>
+								<a href="projetos.html#doacoes">Doações</a>
+							</div>
+						</details>
+					</li>
 					<li><a href="cadastro.html">Cadastro</a></li>
 				</ul>
 			</nav>
@@ -30,8 +47,8 @@
 
 			<div class="projects-grid">
 				<!-- Projeto 1 -->
-				<article class="project-card">
-					<img src="assets/imagens/projeto-educacao.webp" alt="Estudantes participando da oficina de informática" width="360" height="240" loading="lazy">
+				<article class="project-card" id="futuro-brilhante">
+					<img src="assets/imagens/educacao.png" alt="Estudantes participando da oficina de informática" width="360" height="240" loading="lazy">
 					<div class="project-content">
 						<h2>Futuro Brilhante</h2>
 						<p>Oferece reforço escolar, oficinas de informática e incentivo à leitura para crianças e jovens do ensino público.</p>
@@ -40,7 +57,7 @@
 				</article>
 
 				<!-- Projeto 2 -->
-				<article class="project-card">
+				<article class="project-card" id="prato-cheio">
 					<img src="assets/imagens/alimentacao.png" alt="Voluntários organizando alimentos em cestas básicas para distribuição" width="360" height="240" loading="lazy">
 					<div class="project-content">
 						<h2>Prato Cheio</h2>
@@ -56,8 +73,19 @@
 			<h2>Como Suas Doações Ajudam?</h2>
 			<p>100% dos recursos arrecadados são destinados à compra de suprimentos, materiais didáticos e manutenção dos centros de apoio.</p>
 			<a href="cadastro.html" class="btn btn-primary">Cadastre-se para Colaborar</a>
+			<button type="button" class="btn btn-secondary js-only" data-dialog-open="donation-dialog">Saiba como as doações ajudam</button>
 		</section>
 	</main>
+
+	<dialog id="donation-dialog" class="info-dialog" aria-labelledby="donation-dialog-title">
+		<div class="dialog-content">
+			<h2 id="donation-dialog-title">Como as doações ajudam</h2>
+			<p>As contribuições apoiam a compra de alimentos e materiais didáticos, além da manutenção dos centros de apoio mencionados nesta página.</p>
+			<form method="dialog">
+				<button type="submit" class="btn btn-secondary">Fechar</button>
+			</form>
+		</div>
+	</dialog>
 
 	<footer class="main-footer">
 		<div class="container">

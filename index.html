@@ -5,18 +5,35 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="ONG Ação & Esperança - Transformando vidas através do voluntariado e apoio comunitário.">
 	<title>Início - Ação & Esperança</title>
+	<link rel="stylesheet" href="styles.css">
+	<script src="script.js" defer></script>
 </head>
 <body>
+	<a class="skip-link" href="#conteudo-principal">Pular para o conteúdo</a>
 
 	<header class="main-header">
 		<div class="container">
 			<a href="index.html" class="logo">
-				<img src="assets/imagens/logo.svg" alt="Logotipo da ONG Ação & Esperança" width="150" height="146">
+				<img src="assets/imagens/logo.png" alt="Logotipo da ONG Ação & Esperança" width="150" height="146">
 			</a>
-			<nav aria-label="Navegação principal">
+			<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Abrir navegação">
+				<span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+			</button>
+			<nav id="primary-navigation" aria-label="Navegação principal">
 				<ul class="nav-list">
 					<li><a href="index.html" class="active" aria-current="page">Início</a></li>
-					<li><a href="projetos.html">Projetos</a></li>
+					<li class="nav-projects">
+						<a href="projetos.html">Projetos</a>
+						<details class="nav-dropdown">
+							<summary class="dropdown-toggle"><span class="visually-hidden">Atalhos de projetos</span></summary>
+							<div class="dropdown-menu">
+								<a href="projetos.html">Todos os projetos</a>
+								<a href="projetos.html#futuro-brilhante">Futuro Brilhante</a>
+								<a href="projetos.html#prato-cheio">Prato Cheio</a>
+								<a href="projetos.html#doacoes">Doações</a>
+							</div>
+						</details>
+					</li>
 					<li><a href="cadastro.html">Cadastro</a></li>
 				</ul>
 			</nav>
@@ -68,7 +85,7 @@
 					<p><strong>E-mail:</strong> contato@acaoeesperanca.org.br</p>
 				</div>
 				<div class="contact-map">
-					<img src="assets/imagens/mapa-localizacao.webp" alt="Mapa ilustrativo mostrando a localização da ONG Ação & Esperança" width="500" height="300" loading="lazy">
+					<img src="assets/imagens/localizacao.png" alt="Mapa ilustrativo mostrando a localização da ONG Ação & Esperança" width="500" height="300" loading="lazy">
 				</div>
 			</div>
 		</section>
