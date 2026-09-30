@@ -1,11 +1,71 @@
 # Ação & Esperança
 
-Site demonstrativo de uma organização social fictícia. O projeto apresenta a instituição, seus projetos e um formulário para demonstrar o cadastro de pessoas interessadas em colaborar.
+Site demonstrativo de uma organização social fictícia, criado com três páginas para apresentar a instituição, divulgar iniciativas comunitárias e mostrar um formulário de cadastro para pessoas interessadas em colaborar.
 
-## Estrutura
+## Visão geral
+
+A página inicial apresenta a missão, a visão, os valores e os contatos da organização. A página de projetos descreve iniciativas de educação e alimentação e apresenta informações sobre doações. A página de cadastro demonstra como coletar dados de voluntários e doadores, mas não envia nem armazena essas informações.
+
+## Tecnologias
+
+- **HTML5:** estrutura das páginas, navegação, conteúdo, formulário e diálogos nativos.
+- **CSS3:** identidade visual, componentes, estados de foco e layouts responsivos por meio de media queries.
+- **JavaScript (nativo):** menu móvel, fechamento acessível da navegação, abertura de diálogos e mensagens de validação do formulário.
+- **Vite:** servidor de desenvolvimento e bundler para gerar a build de produção das três páginas.
+- **Imagens PNG:** logotipo e imagens de conteúdo em `assets/imagens/`.
+
+Não há framework de interface, backend ou banco de dados. O Vite é a dependência de desenvolvimento do projeto.
+
+## Requisitos
+
+- Node.js 20.19+ ou 22.12+ e npm.
+- Um navegador moderno com suporte a HTML5, CSS e JavaScript.
+- Opcionalmente, Python 3 para iniciar um servidor HTTP local pelo terminal. Não é necessário instalar Python para abrir o arquivo HTML diretamente.
+
+## Instalação
+
+Depois de obter os arquivos do projeto, abra a pasta no VS Code ou em outro editor e instale as dependências com:
+
+```bash
+npm ci
+```
+
+## Executar localmente
+
+Inicie o servidor de desenvolvimento do Vite:
+
+```bash
+npm run dev
+```
+
+Abra no navegador o endereço apresentado no terminal. Para abrir sem instalar dependências, também é possível abrir `index.html` diretamente ou usar o servidor estático do Python 3.
+
+## Build e testes
+
+Gere a build de produção com:
+
+```bash
+npm run build
+```
+
+O Vite processa as três páginas HTML, agrupa e minifica o CSS e o JavaScript e grava os arquivos em `dist/`. As imagens são copiadas como estão, sem conversão de formato. Para servir a build localmente:
+
+```bash
+npm run preview
+```
+
+Não há suíte de testes automatizados configurada.
+
+Para uma verificação manual, abra as três páginas e confira os links de navegação, o menu em uma janela estreita, os atalhos para as seções de projetos, os diálogos e a validação do formulário (campos obrigatórios, CPF, telefone e CEP). Confirme também que, ao finalizar o cadastro, aparece o aviso de demonstração e nenhum dado é enviado ou armazenado.
+
+## Estrutura do projeto
 
 ```text
 .
+├── .gitignore          # Exclui node_modules e a saída de build
+├── package.json        # Scripts do projeto e dependência de desenvolvimento
+├── package-lock.json   # Versões exatas das dependências instaladas
+├── vite.config.js      # Entradas das três páginas para a build multipágina
 ├── index.html          # Página inicial: apresentação, missão, visão, valores e contato
 ├── projetos.html       # Projetos sociais e informações sobre doações
 ├── cadastro.html       # Formulário demonstrativo de voluntários e doadores
@@ -15,21 +75,17 @@ Site demonstrativo de uma organização social fictícia. O projeto apresenta a 
     └── imagens/        # Logotipo e imagens usadas nas páginas
 ```
 
-## Como o site funciona
+As três páginas compartilham `styles.css` e `script.js`. A navegação entre páginas usa links HTML, e os atalhos para conteúdo dentro de uma página usam identificadores na URL, como `#futuro-brilhante`.
 
-O projeto usa HTML, CSS e JavaScript nativos, sem framework, dependências externas, servidor de aplicação ou processo de compilação. Cada página HTML representa uma tela do site e carrega o mesmo `styles.css` e `script.js`. A navegação entre as telas é feita por links comuns; os atalhos de projetos levam a seções específicas por meio de identificadores na URL.
+## Funcionamento das páginas
 
-- **Início (`index.html`):** apresenta a organização, sua missão, visão, valores e informações de contato.
-- **Projetos (`projetos.html`):** descreve as iniciativas Futuro Brilhante e Prato Cheio e explica o uso das doações. Um diálogo nativo do navegador apresenta informações adicionais.
-- **Cadastro (`cadastro.html`):** reúne dados pessoais e endereço, permite escolher uma forma de apoio e informar áreas de interesse. Os campos obrigatórios e os formatos de CPF, telefone e CEP são verificados pelas regras HTML do formulário.
-- **Estilos (`styles.css`):** define cores, tipografia, componentes e comportamento responsivo. Os layouts se adaptam a telas menores com media queries.
-- **Interações (`script.js`):** controla a abertura e o fechamento da navegação móvel, os atalhos de projetos e os diálogos. Na tela de cadastro, acompanha a validação e mostra mensagens de erro ou de confirmação.
-- **Imagens (`assets/imagens/`):** contém os arquivos visuais referenciados pelas páginas, como o logotipo e as imagens das seções e projetos.
+- **Início (`index.html`):** apresenta a instituição, suas missão, visão e valores, além das informações de contato.
+- **Projetos (`projetos.html`):** descreve Futuro Brilhante e Prato Cheio. Um diálogo nativo do navegador complementa as informações sobre doações.
+- **Cadastro (`cadastro.html`):** agrupa informações pessoais, endereço e preferências de colaboração. A validação de campos obrigatórios e formatos é feita pelas regras nativas do HTML e acompanhada por mensagens acessíveis no JavaScript.
+- **Estilos (`styles.css`):** centraliza cores, tipografia, componentes e adaptações para telas menores.
+- **Interações (`script.js`):** controla o menu móvel, os atalhos de projetos e a abertura e o fechamento de diálogos. No cadastro, apresenta mensagens de validação e impede o envio do formulário.
+- **Imagens (`assets/imagens/`):** reúne os recursos gráficos referenciados pelas páginas.
 
-## Cadastro demonstrativo
+## Aviso sobre o cadastro
 
-Este site não envia nem armazena os dados preenchidos. Após a validação do navegador, o JavaScript impede o envio do formulário e informa que a ação é apenas uma demonstração. Não use dados pessoais reais. Para transformar o cadastro em um fluxo real, será necessário conectá-lo a um backend e definir como os dados serão tratados e protegidos.
-
-## Como abrir
-
-Abra `index.html` diretamente em um navegador. Como o projeto é estático, também pode ser servido por uma extensão como Live Server no VS Code; nesse caso, inicie o servidor pela pasta do projeto e acesse a página inicial indicada pela extensão.
+Este site é uma demonstração: os dados preenchidos não são enviados nem armazenados. Não informe dados pessoais reais. Para usar o cadastro em produção, será necessário implementar um backend e definir medidas apropriadas para o tratamento e a proteção dos dados.
