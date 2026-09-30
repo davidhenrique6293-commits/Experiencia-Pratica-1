@@ -4,6 +4,7 @@ import { defineConfig } from "vite";
 const projectRoot = fileURLToPath(new URL(".", import.meta.url));
 
 export default defineConfig({
+  base: process.env.GITHUB_ACTIONS === "true" ? "/Experiencia-Pratica-1/" : "/",
   build: {
     rollupOptions: {
       input: {

@@ -58,6 +58,10 @@ Não há suíte de testes automatizados configurada.
 
 Para uma verificação manual, abra as três páginas e confira os links de navegação, o menu em uma janela estreita, os atalhos para as seções de projetos, os diálogos e a validação do formulário (campos obrigatórios, CPF, telefone e CEP). Confirme também que, ao finalizar o cadastro, aparece o aviso de demonstração e nenhum dado é enviado ou armazenado.
 
+## Publicação no GitHub Pages
+
+O workflow `.github/workflows/deploy.yml` gera e publica `dist/` automaticamente em cada push para a branch `main`. Na primeira publicação, no repositório do GitHub, abra **Settings → Pages** e selecione **GitHub Actions** como origem do build. O Vite usa o caminho `/Experiencia-Pratica-1/` no workflow para que páginas, scripts, estilos e imagens funcionem no endereço de projeto do GitHub Pages.
+
 ## Estrutura do projeto
 
 ```text
@@ -66,6 +70,8 @@ Para uma verificação manual, abra as três páginas e confira os links de nave
 ├── package.json        # Scripts do projeto e dependência de desenvolvimento
 ├── package-lock.json   # Versões exatas das dependências instaladas
 ├── vite.config.js      # Entradas das três páginas para a build multipágina
+├── .github/workflows/
+│   └── deploy.yml      # Build e publicação automática no GitHub Pages
 ├── index.html          # Página inicial: apresentação, missão, visão, valores e contato
 ├── projetos.html       # Projetos sociais e informações sobre doações
 ├── cadastro.html       # Formulário demonstrativo de voluntários e doadores
